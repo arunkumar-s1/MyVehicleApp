@@ -1,0 +1,64 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="ISO-8859-1">  
+<title>Insert title here</title>  
+<script>
+function validateForm() {
+	 var v_name = document.forms["myForm"]["v_name"].value;
+  var wheels = document.forms["myForm"]["wheels"].value;
+  var seats = document.forms["myForm"]["seats"].value;
+  var number_plate = document.forms["myForm"]["number_plate"].value;
+  var date_of_purchase = document.forms["myForm"]["date_of_purchase"].value;
+  if (v_name == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  if (wheels == "" || isNaN(wheels)) {
+	    alert("wheels must be valid");
+	    return false;
+	}
+  if (seats == "" || isNaN(seats)) {
+	    alert("seats must be valid");
+	    return false;
+	}
+ 
+  if (number_plate == "" ) {
+	    alert("number_plate must be valid");
+	    return false;
+	}
+  if (date_of_purchase!="" ) {
+	    var date_regex = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/ ;
+	    if(!(date_regex.test(date_of_purchase)))
+	    {
+	    	alert("date_of_purchase must be in YYYY-MM-DD");
+	    return false;
+	    }
+	} else {
+		alert("date_of_purchase must be valid");
+		return false;
+	}
+  
+}  
+</script>
+</head>  
+<body>  
+  
+<h1>Add New Vehicle</h1>  
+<form name="myForm" action="SaveVechicle" method="post" onsubmit="return validateForm()">  
+<table>  
+<tr><td>Name:</td><td><input type="text" name="v_name"/></td></tr>  
+<tr><td>Number of Wheels:</td><td><input type="text" name="wheels"/></td></tr>  
+<tr><td>Number of Seats:</td><td><input type="text" name="seats"/></td></tr>  
+<tr><td>Number Plate:</td><td><input type="text" name="number_plate"/></td></tr>  
+<tr><td>Date Of Purchase(YYYY-MM-DD):</td><td><input type="text" name="date_of_purchase"/></td></tr>  
+<tr><td colspan="2"><input type="submit" value="Save Vechicle"/></td></tr>  
+</table>  
+</form>  
+  
+<br/>  
+
+<br>
+
+</body>  
+</html>  
